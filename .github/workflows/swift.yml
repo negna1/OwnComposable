@@ -17,7 +17,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build
-      run: |
-          xcodebuild clean test -project "TestSwiftData.xcproject" -scheme "TestSwiftData" -destination "platform=iOS Simulator,name=iPhone 12 Pro,OS=latest" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+      run: swift build -v
     - name: Run tests
       run: swift test -v
