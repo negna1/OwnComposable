@@ -18,6 +18,7 @@ struct PicListView: View {
     @State private var isAppeared: Bool = false
     var body: some View {
         VStack {
+            
             TwoButtonWaveAnimation()
                 .frame(height: 50)
         }.onAppear(perform: {
