@@ -14,11 +14,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Navigate to Components package directory
-        run: cd Components
+      - name: Navigate to TestSwiftData directory
+        run: cd TestSwiftData
 
-      - name: Build Package
+      - name: Build
         run: swift build
 
-      - name: Test Package
+      - name: Test 
         run: swift test
