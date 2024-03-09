@@ -14,11 +14,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Navigate to TestSwiftData directory
-        run: cd TestSwiftData
 
       - name: Build
         run: swift build
 
-      - name: Test 
+      - name: Test
         run: swift test
