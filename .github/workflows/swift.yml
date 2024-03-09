@@ -14,8 +14,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+      - name: Navigate to Components package directory
+        run: cd Components
 
       - name: Build Package
         run: swift build
