@@ -1,28 +1,29 @@
 # This workflow will build a Swift project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-swift
 
-name: Swift
+name: Swift Package CI
 
-#when to trigger the jobs
 on:
   push:
-    branches: [ main ] #trigger on each push to master
-  pull_request:
-    branches: [ main ] #trigger on each PR for master
+    branches:
+      - main
 
-#list of jobs to perform
 jobs:
-  #the only job in the list, named `build`
   build:
-    #specify OS to run the jobs on
-    runs-on: macos-latest
-    #sequential steps to run for the `build` job
+    name: Build and Test
+    runs-on: ubuntu-latest
+
     steps:
-      # step 1, use Marketplace action called Checkout@v2, to checkout the code
-    - uses: actions/checkout@v2 #'uses' keyword launches the Marketplace action
-      # step 2, verbosely build the package using the `swift` CLI
-    - name: Build
-      run: swift build -v #'run' keyword executes the command, as if it's run in terminal
-      # step 3, verbosely test the package using the `swift` CLI
-    - name: Run tests
-      run: swift test -v #'run' keyword executes the command, as if it's run in terminal
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Swift
+        uses: swift-actions/setup-swift@v2
+        with:
+          swift-version: '5.5'  # Specify the Swift version to use
+
+      - name: Build Package
+        run: swift build
+
+      - name: Test Package
+        run: swift test
